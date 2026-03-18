@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 Drill 1</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #ffc0cb, #ff99cc);
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background-color: #fff0f5;
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #d63384;
+            font-weight: bold;
+        }
+
+        /* NEW PINK TEXT */
+        .pink-text {
+            color: #ff4da6;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 10px;
+            border: 2px solid #ff66b2;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 15px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #e0559f;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>˚ ༘ ೀ⋆｡˚💖Electricity Consumption Classifier💖˚ ༘ ೀ⋆｡˚</h1>
+
+    <p class="pink-text">°‧ 🎀⋆.ೃ࿔*:･ Enter your electricity usage (kWh) below: °‧ 🎀⋆.ೃ࿔*:･</p>
+
+    <div class="box">
+        <h3 class="pink-text">⋆.𐙚 ̊kWh Input⋆.𐙚 ̊</h3>
+
+        <input type="number" id="kwh" placeholder="Enter kWh here">
+
+        <br>
+        <button onclick="classify()">Classify</button>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function classify() {
+            let kwh = parseFloat(document.getElementById("kwh").value);
+
+            if (kwh < 0 || isNaN(kwh)) {
+                document.getElementById("message").innerHTML = "Please input a non-negative number.";
+                document.getElementById("message").className = "error";
+                return;
+            }
+
+            let result = "";
+
+            if (kwh <= 100) {
+                result = "Lifeline Consumer 💡 (Discounted rates)";
+            } else if (kwh <= 200) {
+                result = "Low Consumption 🌸 (Normal rate)";
+            } else if (kwh <= 300) {
+                result = "Average Consumption 💖 (Typical usage)";
+            } else if (kwh <= 500) {
+                result = "High Consumption ⚡ (Higher usage)";
+            } else {
+                result = "Very High Consumption 🔥 (Heavy user)";
+            }
+
+            alert(result);
+        }
+    </script>
+
+</body>
+</html>
